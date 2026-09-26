@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-zenodo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Zenodo MCP.",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-d26374123009c93e7d47fc30c2235c01a92660b65797862a374f31e6418b8127",
-    "sourceCommit": "b0fb3c31386cf0256dcf1e2f1b3440435a87ec35"
+    "sourceHash": "v1-7305fda9a32ad6d4ebbf5cdef9ee2ef7033ab196332f2c8e69ee9045e1ecfef5",
+    "sourceCommit": "2cb50b368da3267446f2b6f6a3ddbd3d0eed3d73"
   }
 }
