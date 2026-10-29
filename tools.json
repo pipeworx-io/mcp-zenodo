@@ -1,0 +1,104 @@
+[
+  {
+    "name": "search",
+    "description": "Search Zenodo open-research repository for datasets, publications, software, and other research outputs by keyword query. Filterable by type, community, and sort order (mostrecent/bestmatch/mostviewed); returns metadata, DOI, and file links.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "dataset | publication | software | presentation | poster | image | video | other"
+        },
+        "communities": {
+          "type": "string",
+          "description": "Comma-sep community ids."
+        },
+        "sort": {
+          "type": "string",
+          "description": "mostrecent | bestmatch | mostviewed"
+        },
+        "page": {
+          "type": "number"
+        },
+        "size": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "query"
+      ]
+    }
+  },
+  {
+    "name": "record",
+    "description": "Single record by Zenodo id.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  },
+  {
+    "name": "record_files",
+    "description": "List files attached to a Zenodo record by its numeric id. Returns file names, sizes, checksums, and direct download URLs.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  },
+  {
+    "name": "communities",
+    "description": "List or search Zenodo communities (thematic collections of records) by optional keyword query; returns community id, title, description, and record count.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string"
+        },
+        "page": {
+          "type": "number"
+        },
+        "size": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  {
+    "name": "community_records",
+    "description": "Fetch paginated records belonging to a Zenodo community by its slug id (e.g. \"openaire\"). Returns record metadata, DOIs, and file links for all items in the community.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "page": {
+          "type": "number"
+        },
+        "size": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+]
