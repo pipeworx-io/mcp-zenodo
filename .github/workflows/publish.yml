@@ -143,6 +143,17 @@ jobs:
             repo='${{ github.event.repository.name }}'
             echo "::error::npm returned ENEEDAUTH. This almost certainly means no trusted publisher is configured for this package yet, NOT that a token is missing — this workflow publishes over OIDC and deliberately has no credential. Fix: from pipeworx-core, npm login (interactive, 2FA) then ./scripts/npm-trust-bulk.sh --only ${repo#mcp-}. See docs/npm-trusted-publishing.md."
           fi
+          if [ $rc -ne 0 ] && echo "$out" | grep -q 'TLOG_CREATE_ENTRY_ERROR'; then
+            # fleet #3894: an equivalent Sigstore transparency-log entry
+            # already exists for THIS exact tarball+version, so this version
+            # can never publish — not now, not on a re-run of this very
+            # workflow. Re-dispatching changes nothing; only a version the
+            # content has never seen will. pipeworx-core's release-packs.mjs
+            # (scripts/npm-release-status.mjs classifies the cause as `tlog`)
+            # computes that version past this one on its own next pass —
+            # nobody needs to act on this by hand.
+            echo "::error::npm returned TLOG_CREATE_ENTRY_ERROR (409): an equivalent entry already exists in the transparency log for this exact version+tarball, so this version can never publish. Re-running this workflow will fail the same way. The next pipeworx-core release run computes a version past this one and retries automatically. See docs/npm-trusted-publishing.md."
+          fi
           exit $rc
 
       - name: Report
