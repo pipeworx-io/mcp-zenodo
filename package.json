@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-zenodo",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Zenodo MCP.",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "zenodo",
     "gatewaySlug": "zenodo",
-    "sourceHash": "v1-c3801bf311c79955254eb86dc08c8dbddac1b8f27c596f22cbf2766c4197590e",
-    "sourceCommit": "06a6b405041923c5ddf2ac2436e7c049e635f464"
+    "sourceHash": "v1-a3ffeaa1fd78d72d92ed5bda835056e6b7df3c31c59e8113e4a06da96badbcf4",
+    "sourceCommit": "78b905fa3a6880dfb85c79150f4bffe8cf50ef00"
   }
 }
